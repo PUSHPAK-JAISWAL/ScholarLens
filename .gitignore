@@ -1,0 +1,19 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Env / secrets
+.env
+.env.local
+
+# Node
+node_modules/
+.next/
+out/
+
+# Python
+__pycache__/
+.venv/
+venv/
