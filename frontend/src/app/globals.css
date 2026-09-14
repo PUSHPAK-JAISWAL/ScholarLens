@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
+/* Design tokens from project-requirement-docs/design.md - warm paper-notebook
+   system. Single light theme; the plan does not call for a dark variant. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-cream-paper: #f8f5ed;
+  --color-ink: #000000;
+  --color-graphite: #707070;
+  --color-sunshine-highlight: #ffda6e;
+  --color-mint-signal: #6ece9d;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-cream-paper: var(--color-cream-paper);
+  --color-ink: var(--color-ink);
+  --color-graphite: var(--color-graphite);
+  --color-sunshine-highlight: var(--color-sunshine-highlight);
+  --color-mint-signal: var(--color-mint-signal);
+  --font-sans: var(--font-dm-sans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream-paper);
+  color: var(--color-ink);
+  font-family: var(--font-dm-sans);
+  font-feature-settings: "ss03", "ss04";
 }

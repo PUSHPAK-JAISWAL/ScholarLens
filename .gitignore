@@ -17,3 +17,11 @@ out/
 __pycache__/
 .venv/
 venv/
+
+/project-requirement-docs
+
+# AI Blueprint local workflow files
+.agents/
+.claude/
+blueprint/
+CLAUDE.md
