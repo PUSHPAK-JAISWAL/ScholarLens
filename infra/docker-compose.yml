@@ -8,6 +8,10 @@ services:
     env_file:
       - path: ../backend/.env
         required: false
+    environment:
+      # In-network ChromaDB address; overrides the host-machine default in .env.
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: "8000"
     volumes:
       - ../backend:/app
     depends_on:

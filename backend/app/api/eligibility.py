@@ -2,6 +2,7 @@
 
 from fastapi import APIRouter, HTTPException
 
+from app.agent.agent import EligibilityEngineError, get_agent
 from app.agent.models import EligibilityResult
 from app.api.errors import ErrorResponse
 from app.api.models import EligibilityRequest
@@ -18,7 +19,9 @@ router = APIRouter()
         503: {"model": ErrorResponse, "description": "The eligibility engine is not available."},
     },
 )
-def check_eligibility(request: EligibilityRequest) -> EligibilityResult:
+async def check_eligibility(request: EligibilityRequest) -> EligibilityResult:
     """Determine which programs a student may qualify for, with the rule behind each result."""
-    # The agent that answers this arrives in feature 5; until then the engine is genuinely absent.
-    raise HTTPException(status_code=503)
+    try:
+        return await get_agent().check_eligibility(request)
+    except EligibilityEngineError as exc:
+        raise HTTPException(status_code=503) from exc

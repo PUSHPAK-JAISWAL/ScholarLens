@@ -8,10 +8,20 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
-    openai_api_key: str | None = None
+    google_api_key: str | None = None
     tavily_api_key: str | None = None
-    serpapi_api_key: str | None = None
     frontend_origin: str = "http://localhost:3000"
+
+    chroma_host: str = "localhost"
+    chroma_port: int = 8001
+    chroma_collection_name: str = "scholarship_programs"
+    agent_model: str = "google:gemini-2.5-flash"
+    embedding_model: str = "gemini-embedding-001"
+    retrieval_top_k: int = 5
+    llm_timeout_seconds: float = 20.0
+    chroma_timeout_seconds: float = 5.0
+    web_search_timeout_seconds: float = 10.0
+    agent_run_timeout_seconds: float = 45.0
 
 
 @lru_cache
